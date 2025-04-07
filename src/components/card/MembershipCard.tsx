@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
-import { Battery, Lightning, ChevronDown } from 'lucide-react';
+import { Battery, Zap, ChevronDown } from 'lucide-react';
 
 interface MembershipCardProps {
   cardNumber: string;
@@ -36,7 +36,7 @@ const MembershipCard = ({ cardNumber, name, expiryDate }: MembershipCardProps) =
               <p className="text-xl font-bold">CHARGE PASS</p>
             </div>
             <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
-              <Lightning className="h-6 w-6 text-emerald-300" />
+              <Zap className="h-6 w-6 text-emerald-300" />
             </div>
           </div>
           
