@@ -45,14 +45,14 @@ const CardSearch = ({ onSearch, isLoading }: CardSearchProps) => {
             placeholder="Enter member phone number"
             value={phoneNumber}
             onChange={(e) => setPhoneNumber(e.target.value)}
-            className="pl-10"
+            className="pl-10 border-green-200 focus-visible:ring-green-500"
           />
-          <Search className="absolute left-3 top-2.5 h-5 w-5 text-muted-foreground" />
+          <Search className="absolute left-3 top-2.5 h-5 w-5 text-green-500" />
         </div>
       </div>
       <Button 
         type="submit" 
-        className="w-full" 
+        className="w-full bg-green-600 hover:bg-green-700 text-white" 
         disabled={isLoading}
       >
         {isLoading ? "Searching..." : "Find Member Card"}
