@@ -8,18 +8,10 @@ import { Input } from '@/components/ui/input';
 import { Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { supabase } from '@/integrations/supabase/client';
-import { useToast } from '@/components/ui/use-toast';
+import { useToast } from '@/hooks/use-toast';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import MembershipCard from '@/components/card/MembershipCard';
-
-interface Member {
-  id: string;
-  name: string;
-  phone_number: string;
-  card_number: string;
-  car_model: string;
-  expiry_date: string;
-}
+import type { Member } from '@/types/supabase';
 
 const MembersPage = () => {
   const [members, setMembers] = useState<Member[]>([]);
@@ -46,7 +38,7 @@ const MembersPage = () => {
       }
       
       if (data) {
-        setMembers(data as Member[]);
+        setMembers(data);
       }
     } catch (error: any) {
       console.error('Error fetching members:', error);

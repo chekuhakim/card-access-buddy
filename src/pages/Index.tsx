@@ -4,19 +4,11 @@ import Layout from '@/components/layout/Layout';
 import CardSearch from '@/components/card/CardSearch';
 import MembershipCard from '@/components/card/MembershipCard';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { useToast } from '@/components/ui/use-toast';
+import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
-
-interface Member {
-  id: string;
-  name: string;
-  phone_number: string;
-  card_number: string;
-  car_model: string;
-  expiry_date: string;
-}
+import type { Member } from '@/types/supabase';
 
 const Index = () => {
   const [foundMember, setFoundMember] = useState<Member | null>(null);
@@ -58,7 +50,7 @@ const Index = () => {
           throw error;
         }
       } else if (data) {
-        setFoundMember(data as Member);
+        setFoundMember(data);
         toast({
           title: "Member found",
           description: "Card details loaded successfully",
