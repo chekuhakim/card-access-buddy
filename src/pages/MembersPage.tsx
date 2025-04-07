@@ -1,11 +1,10 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Input } from '@/components/ui/input';
-import { Search } from 'lucide-react';
+import { Search, Plus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
@@ -57,6 +56,10 @@ const MembersPage = () => {
     setIsDialogOpen(true);
   };
 
+  const handleAddMember = () => {
+    navigate('/members/add');
+  };
+
   const filteredMembers = members.filter(member => 
     member.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     member.phone_number.includes(searchTerm) ||
@@ -67,11 +70,19 @@ const MembersPage = () => {
   return (
     <Layout>
       <div className="space-y-6">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight text-green-600">Members</h1>
-          <p className="text-muted-foreground mt-2">
-            View and manage all member information
-          </p>
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold tracking-tight text-green-600">Members</h1>
+            <p className="text-muted-foreground mt-2">
+              View and manage all member information
+            </p>
+          </div>
+          <Button 
+            onClick={handleAddMember} 
+            className="bg-green-600 hover:bg-green-700"
+          >
+            <Plus className="mr-2 h-4 w-4" /> Add Member
+          </Button>
         </div>
 
         <Card>

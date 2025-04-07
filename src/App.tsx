@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
 import Index from "./pages/Index";
 import MembersPage from "./pages/MembersPage";
+import AddMemberPage from "./pages/AddMemberPage";
 import AuthPage from "./pages/AuthPage";
 import NotFound from "./pages/NotFound";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
@@ -26,6 +27,14 @@ const App = () => (
             element={
               <ProtectedRoute>
                 <MembersPage />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/members/add" 
+            element={
+              <ProtectedRoute>
+                <AddMemberPage />
               </ProtectedRoute>
             } 
           />
